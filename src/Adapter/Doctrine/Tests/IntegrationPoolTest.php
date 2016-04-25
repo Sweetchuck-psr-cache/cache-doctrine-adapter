@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of php-cache\doctrine-adapter package.
+ * This file is part of php-cache organization.
  *
  * (c) 2015-2015 Aaron Scherer <aequasi@gmail.com>, Tobias Nyholm <tobias.nyholm@gmail.com>
  *
@@ -11,9 +11,9 @@
 
 namespace Cache\Adapter\Doctrine\Tests;
 
-use Cache\IntegrationTests\TaggableCachePoolTest;
+use Cache\IntegrationTests\CachePoolTest;
 
-class IntegrationTagTest extends TaggableCachePoolTest
+class IntegrationPoolTest extends CachePoolTest
 {
     use CreatePoolTrait;
 }
