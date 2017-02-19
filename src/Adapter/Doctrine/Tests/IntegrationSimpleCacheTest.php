@@ -11,9 +11,9 @@
 
 namespace Cache\Adapter\Doctrine\Tests;
 
-use Cache\IntegrationTests\TaggableCachePoolTest;
+use Cache\IntegrationTests\SimpleCacheTest;
 
-class IntegrationTagTest extends TaggableCachePoolTest
+class IntegrationSimpleCacheTest extends SimpleCacheTest
 {
     use CreatePoolTrait;
 }
