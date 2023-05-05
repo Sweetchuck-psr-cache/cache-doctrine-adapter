@@ -1,0 +1,49 @@
+name: 'CI'
+
+on:
+    - 'push'
+    - 'pull_request'
+env:
+    IS_GITHUB: 'true'
+    XDEBUG_MODE: 'coverage'
+    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.APP_GITHUB_TOKEN }}" }}'
+
+jobs:
+    phpunit:
+        runs-on: 'ubuntu-latest'
+
+        strategy:
+            fail-fast: false
+            matrix:
+                php_version:
+                    - '8.1.18'
+                    - '8.2.5'
+
+        steps:
+            -
+                uses: 'actions/checkout@v3'
+            -
+                name: 'Install PHP Packages'
+                uses: 'php-actions/composer@v6'
+                with:
+                    version: '2.x'
+                    php_version: '${{ matrix.php_version }}'
+            -
+                name: 'Lint - phpcs'
+                uses: 'php-actions/composer@v6'
+                with:
+                    version: '2.x'
+                    php_version: '${{ matrix.php_version }}'
+                    command: 'run'
+                    args: "lint:phpcs"
+            -
+                name: 'Test - All'
+                uses: 'php-actions/composer@v6'
+                continue-on-error: true
+                with:
+                    version: '2.x'
+                    php_version: '${{ matrix.php_version }}'
+                    php_extensions: >-
+                        pcov
+                    command: 'run'
+                    args: "test:all"

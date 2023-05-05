@@ -1,0 +1,95 @@
+{
+    "name": "cache/doctrine-adapter",
+    "description": "A PSR-6 cache implementation using Doctrine. This implementation supports tags",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "cache",
+        "psr-6",
+        "doctrine",
+        "tag"
+    ],
+    "authors": [
+        {
+            "name": "Aaron Scherer",
+            "email": "aequasi@gmail.com",
+            "homepage": "https://github.com/aequasi"
+        },
+        {
+            "name": "Tobias Nyholm",
+            "email": "tobias.nyholm@gmail.com",
+            "homepage": "https://github.com/nyholm"
+        }
+    ],
+    "homepage": "https://www.php-cache.com/en/latest/",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "repositories": {
+        "cache/adapter-common": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-adapter-common.git"
+        },
+        "cache/integration-tests": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-integration-tests.git"
+        },
+        "cache/tag-interop": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck-psr-cache/cache-tag-interop.git"
+        },
+        "tedivm/stash": {
+            "type": "github",
+            "url": "https://github.com/Sweetchuck/tedivm-stash.git"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "cache/adapter-common": "3.x-dev",
+        "doctrine/cache": "^1.6 || ^2.0",
+        "psr/cache": "^3.0",
+        "psr/simple-cache": "^3.0"
+    },
+    "require-dev": {
+        "cache/integration-tests": "3.x-dev",
+        "phpunit/phpunit": "^10.0",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "suggest": {
+        "ext-apcu": "Allows for caching with ApcU",
+        "ext-memcache": "Allows for caching with Memcache",
+        "ext-memcached": "Allows for caching with Memcached",
+        "ext-redis": "Allows for caching with Redis"
+    },
+    "provide": {
+        "psr/cache-implementation": "^3.0",
+        "psr/simple-cache-implementation": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cache\\Adapter\\Doctrine\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cache\\Adapter\\Doctrine\\Tests\\": "tests/src/"
+        }
+    },
+    "scripts": {
+        "lint": [
+            "@lint:phpcs"
+        ],
+        "lint:phpcs": "phpcs",
+        "test:all": "phpunit",
+        "test": [
+            "@test:acceptance"
+        ],
+        "test:acceptance": "phpunit --testsuite='Acceptance'"
+    }
+}

@@ -12,7 +12,7 @@ declare(strict_types = 1);
  * with this source code in the file LICENSE.
  */
 
-namespace Cache\Adapter\Doctrine\Tests;
+namespace Cache\Adapter\Doctrine\Tests\Acceptance;
 
 use Cache\Adapter\Common\CacheItem;
 use Cache\Adapter\Doctrine\DoctrineCachePool;
