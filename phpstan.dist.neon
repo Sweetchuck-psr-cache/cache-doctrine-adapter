@@ -1,0 +1,5 @@
+includes:
+    - vendor/cache/tag-interop/.phpstan/parameters.general.neon
+    - vendor/cache/tag-interop/.phpstan/parameters.typeAliases.prod.neon
+    - .phpstan/parameters.paths.neon
+    - .phpstan/parameters.ignoreErrors.neon

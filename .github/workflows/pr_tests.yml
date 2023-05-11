@@ -30,12 +30,24 @@ jobs:
                     php_version: '${{ matrix.php_version }}'
             -
                 name: 'Lint - phpcs'
+                if: >
+                    startsWith(matrix.php_version, '8.1') == true
                 uses: 'php-actions/composer@v6'
                 with:
                     version: '2.x'
                     php_version: '${{ matrix.php_version }}'
                     command: 'run'
                     args: "lint:phpcs"
+            -
+                name: 'Lint - phpstan'
+                if: >
+                    startsWith(matrix.php_version, '8.1') == true
+                uses: 'php-actions/composer@v6'
+                with:
+                    version: '2.x'
+                    php_version: '${{ matrix.php_version }}'
+                    command: 'run'
+                    args: "lint:phpstan"
             -
                 name: 'Test - All'
                 uses: 'php-actions/composer@v6'
